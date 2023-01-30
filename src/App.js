@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Quiz from './Quiz'
+import Cover from './Cover'
 
-function App() {
+
+
+export default function App() {
+
+  const [coverPage, setCoverPage] = React.useState(true)
+
+  function handleStart(){
+    console.log("HandleStart Clicked")
+    return(
+      setCoverPage(!coverPage)
+    )
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+        {/*conditionaly render cover page untill start button is clicked */}
+        {coverPage ? <Cover handleStart={handleStart} />
+        :<Quiz />}
+    </main>
+  )
 }
-
-export default App;
