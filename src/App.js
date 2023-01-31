@@ -9,7 +9,6 @@ export default function App() {
   const [coverPage, setCoverPage] = React.useState(true)
 
   function handleStart(){
-    console.log("HandleStart Clicked")
     return(
       setCoverPage(!coverPage)
     )
