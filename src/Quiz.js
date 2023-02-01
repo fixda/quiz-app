@@ -8,13 +8,11 @@ export default function Quiz() {
     const [reset, setReset] = React.useState(false)
 
 
-    /**Working Code */
      React.useEffect(()=>{
-         fetch("https://opentdb.com/api.php?amount=5&difficulty=easy")
+         fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
              .then(res=> res.json())
              .then(data => setQuestions(data.results))     
      },[])
-     console.log(questions)
 
      const displayQuestions = questions.map((question, index) => (
         <Question 
