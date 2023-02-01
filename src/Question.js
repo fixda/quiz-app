@@ -25,7 +25,11 @@ export default function Question(props) {
         handleClick={handleClick}
     />
     ))
-
+    // function decodeHtml(html) {
+    //   var txt = document.createElement('textarea');
+    //   txt.innerHTML = html;
+    //   return txt.value;
+    // }
 
   return (
     <div className="question-container">
