@@ -1,12 +1,12 @@
 import React from 'react'
 import Question from './Question'
-import { nanoid } from 'nanoid'
 
 export default function Quiz() {
 
     const [questions, setQuestions] = React.useState([])
     const [reset, setReset] = React.useState(false)
-
+    const [reveal, setReveal] = React.useState(false)
+    const [correctCount, setCorrectCount] = React.useState(0)
 
      React.useEffect(()=>{
          fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
@@ -21,8 +21,13 @@ export default function Quiz() {
             cAnswer={question.correct_answer}
             iAnswers={question.incorrect_answers}
             reset={reset}
+            reveal={reveal}
+            count={correctCount}
         />
     ))
+    function revealAnswers(){
+        setReveal(prev => !prev)
+    }
 
     return (
         <div className="quiz-container">
