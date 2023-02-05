@@ -10,11 +10,13 @@ export default function Question(props) {
     React.useEffect(()=> {
             const allAnswers = [...props.iAnswers, props.cAnswer]
             setAnswers(allAnswers.sort(()=> Math.random() - 0.5))
+            // setAnswers(oldAnswers=> oldAnswers.map(old =>({...old, selected: selected})))
     },[props.iAnswers, props.cAnswer])
         console.log(props)
         console.log(answers)
 
-    function handleClick(){
+    function handleClick(x){
+        setSelectedAnswer(x)
         setSelected(!selected)
     }
 
@@ -25,7 +27,7 @@ export default function Question(props) {
       return(
         <span
           className='answer'
-          onClick={handleClick}
+          onClick={()=>handleClick(answer)}
           style={{ backgroundColor: 
                       props.reveal 
                                     ? answer === props.cAnswer 
