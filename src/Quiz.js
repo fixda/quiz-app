@@ -25,13 +25,26 @@ export default function Quiz() {
             count={correctCount}
         />
     ))
+    function resetGame(){
+        setReset(prev => !prev)
+    }
     function revealAnswers(){
         setReveal(prev => !prev)
+        return(
+            <div>
+                <span>You scored {correctCount}/5 correct answers</span> 
+                <button className="restart-button" onClick={resetGame}>Play again</button>
+            </div>
+        )
     }
 
     return (
         <div className="quiz-container">
             <h2>{displayQuestions}</h2>
+            <button
+                onClick={revealAnswers}
+                className="submit-button"
+                >Check Answers</button>
         </div>
      )
 }

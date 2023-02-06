@@ -5,7 +5,7 @@ export default function Question(props) {
     const [answers, setAnswers] = React.useState([]) 
     const [selected, setSelected] = React.useState(false)
     const [correctCount, setCorrectCount] = React.useState(0)
-    const [selectedAnswer, setSelectedAnswer] = React.useState()
+    const [selectedAnswer, setSelectedAnswer] = React.useState("")
 //Shuffle Answers
     React.useEffect(()=> {
             const allAnswers = [...props.iAnswers, props.cAnswer]
@@ -18,6 +18,7 @@ export default function Question(props) {
     function handleClick(x){
         setSelectedAnswer(x)
         setSelected(!selected)
+        console.log(selectedAnswer)
     }
 
 
@@ -40,7 +41,6 @@ export default function Question(props) {
         >{answer}</span>
       )
     })
-
     
 
     function decodeHtml(html) {
