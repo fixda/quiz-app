@@ -10,10 +10,12 @@ export default function Question(props) {
     React.useEffect(()=> {
             const allAnswers = [...props.iAnswers, props.cAnswer]
             setAnswers(allAnswers.sort(()=> Math.random() - 0.5))
-            // setAnswers(oldAnswers=> oldAnswers.map(old =>({...old, selected: selected})))
+            console.log("UseEffect All Answers" + allAnswers)
+            setAnswers(oldAnswers=> oldAnswers.map(old =>({...old, selected, correctSelection: old === props.cAnswer? true : false})))
     },[props.iAnswers, props.cAnswer])
+
         console.log(props)
-        console.log(answers)
+        console.log(answers.correctSelection)
 
     function handleClick(x){
         setSelectedAnswer(x)
@@ -22,25 +24,7 @@ export default function Question(props) {
     }
 
 
-    
-
-    const answerElements = answers.map( answer =>{
-      return(
-        <span
-          className='answer'
-          onClick={()=>handleClick(answer)}
-          style={{ backgroundColor: 
-                      props.reveal 
-                                    ? answer === props.cAnswer 
-                                      ? "green" 
-                                    : selectedAnswer === answer 
-                                      ? "red" 
-                                    : "transparent"
-                                    : selected ? "blue" : "transparent"
-          }}
-        >{answer}</span>
-      )
-    })
+  
     
 
     function decodeHtml(html) {
@@ -53,7 +37,7 @@ export default function Question(props) {
     <div className="question-container">
         <p className="question">{decodeHtml(props.question)}</p>
         <div className="answer-container">
-          {answerElements}
+
         </div>
     </div>
   )
@@ -69,6 +53,25 @@ export default function Question(props) {
         handleClick={handleClick}
     />
     ))
+
+
+            {answers.map( answer =>{
+          return(
+            <span
+              className='answer'
+              onClick={()=>handleClick(answer)}
+              style={{ backgroundColor: 
+                          props.reveal 
+                                        ? answer === props.cAnswer 
+                                          ? "green" 
+                                        : selectedAnswer === answer 
+                                          ? "red" 
+                                        : "transparent"
+                                        : selected ? "blue" : "transparent"
+              }}
+            >{answer}</span>
+          )
+          })}
     
  * 
  */
