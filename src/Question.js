@@ -2,26 +2,9 @@ import React from 'react'
 
 export default function Question(props) {
 
-    const [answers, setAnswers] = React.useState([]) 
-    const [selected, setSelected] = React.useState(false)
-    const [correctCount, setCorrectCount] = React.useState(0)
-    const [selectedAnswer, setSelectedAnswer] = React.useState("")
-//Shuffle Answers
-    React.useEffect(()=> {
-            const allAnswers = [...props.iAnswers, props.cAnswer]
-            setAnswers(allAnswers.sort(()=> Math.random() - 0.5))
-            console.log("UseEffect All Answers" + allAnswers)
-            setAnswers(oldAnswers=> oldAnswers.map(old =>({...old, selected, correctSelection: old === props.cAnswer? true : false})))
-    },[props.iAnswers, props.cAnswer])
 
-        console.log(props)
-        console.log(answers.correctSelection)
 
-    function handleClick(x){
-        setSelectedAnswer(x)
-        setSelected(!selected)
-        console.log(selectedAnswer)
-    }
+
 
 
   
