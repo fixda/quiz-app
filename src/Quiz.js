@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 
 export default function Quiz() {
 
+    const [myData, setMyData] = React.useState
     const [answers, setAnswers] = React.useState([]) 
     const [selected, setSelected] = React.useState(false)
     const [correctCount, setCorrectCount] = React.useState(0)
@@ -15,7 +16,7 @@ export default function Quiz() {
     React.useEffect(()=>{
         fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
             .then(res=> res.json())
-            .then(data => setQuestions(data.results.map(data =>({
+            .then(data => setQuestions(data.results.map((data) =>({
                 ...data,
                 id: nanoid(),
                 selected: selected,
@@ -39,9 +40,9 @@ export default function Quiz() {
     }
 
  //Display Questions
-     const displayQuestions = questions.map((question, index) => (
+     const displayQuestions = questions.map((question) => (
         <Question 
-            key={index}
+            key={id}
             question={question.question}
             cAnswer={question.correct_answer}
             iAnswers={question.incorrect_answers}
